@@ -33,19 +33,23 @@ describe('Controller: Coin', () => {
   });
 
   describe('createCoin', () => {
-    const coinCode = 'ETC';
-    const coinName = 'Ether Classic';
-
     it('should create a new coin', async () => {
-      const coin = await CoinController.createCoin(coinName, coinCode);
-      expect(coin.code).to.eq(coinCode);
-      expect(coin.name).to.eq(coinName);
+      const coinObj = {
+        name: 'Terra',
+        code: 'LUNA',
+      };
+      const coin = await CoinController.createCoin(coinObj);
+      expect(coin.code).to.eq(coinObj.code);
+      expect(coin.name).to.eq(coinObj.name);
       expect(Object.keys(coin).length).to.eq(3);
     });
 
-    it('should refuse creating the same coin if it exists', async () => {
-      await CoinController.createCoin(coinName, coinCode);
-      expect(CoinController.createCoin(coinName, coinCode)).to.be.rejectedWith(Error, 'conflict_coin_code');
+    it('should fail to create a new coin with an existing code', async () => {
+      const coinObj = {
+        name: 'Bitcoin',
+        code: 'BTC',
+      };
+      expect(CoinController.createCoin(coinObj)).to.be.rejectedWith(Error, 'conflict_coin_code');
     });
   });
 });
