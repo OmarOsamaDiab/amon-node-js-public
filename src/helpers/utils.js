@@ -185,6 +185,10 @@ const Utils = {
     }
   },
 
+  isDateOlderThanXUnits(date, range, unit) {
+    return moment(date).isBefore(moment().subtract(range, unit));
+  },
+
   async asyncForEach(array, fn, breakOnFalse = false) {
     for (let index = 0; index < array.length; index++) {
       const res = await fn(array[index], index, array);

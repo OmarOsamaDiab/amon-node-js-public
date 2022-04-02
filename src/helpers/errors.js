@@ -92,7 +92,11 @@ const ERRORS = [
     status: 413,
     description: 'The files you are trying to upload are too big.',
   },
-
+  {
+    code: 'conflict_coin_code',
+    status: 409,
+    description: 'Coin code already exists',
+  },
   // Internal
   {
     code: 'too_busy',
