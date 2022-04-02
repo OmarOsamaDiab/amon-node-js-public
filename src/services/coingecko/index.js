@@ -1,4 +1,4 @@
-const COINGECKO_BASE_URL = require('../../../config').SERVICES.COINGECKO.COINGECKO.BASE_URL;
+const COINGECKO_BASE_URL = require('../../../config').SERVICES.COINGECKO.BASE_URL;
 const errors = require('../../helpers/errors');
 const RequestService = require('../api/request/index');
 
