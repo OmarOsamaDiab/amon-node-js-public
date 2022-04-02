@@ -513,5 +513,4 @@ describe('Helpers: Utils', () => {
     expect(Utils.isDateOlderThanXUnits(moment(), 1, 'hours')).to.be.eq(false);
     expect(Utils.isDateOlderThanXUnits(moment().subtract(2, 'hours'), 1, 'hours')).to.be.eq(true);
   });
-
 });

@@ -5,14 +5,13 @@ const logger = require('../../../modules/logger');
 const CoinGeckoService = require('../../coingecko/index');
 const { isDateOlderThanXUnits } = require('../../../helpers/utils');
 
-
 const CoinController = {
   async getCoinByCode(coinCode) {
     const coin = await Models.Coin.findByCoinCode(coinCode);
 
     errors.assertExposable(coin, 'unknown_coin_code');
 
-    // Fetch coin price if last updated time is older than 1 hour 
+    // Fetch coin price if last updated time is older than 1 hour
     const { priceLastUpdatedAt, price } = coin;
     let lastUpdateOlderThanOneHourAgo;
     if (priceLastUpdatedAt) lastUpdateOlderThanOneHourAgo = isDateOlderThanXUnits(priceLastUpdatedAt, 1, 'hours');

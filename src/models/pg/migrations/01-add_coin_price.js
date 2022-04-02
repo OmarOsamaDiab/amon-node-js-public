@@ -6,7 +6,7 @@ module.exports = {
       ALTER TABLE "Coin" 
       ADD "price" VARCHAR(255),
       ADD "priceLastUpdatedAt" DATE;
-    `
+    `;
     await transaction.sequelize.query(sql, { raw: true, transaction });
   },
 
@@ -15,7 +15,7 @@ module.exports = {
      ALTER TABLE "Coin"
      DROP "price",
      DROP "priceLastUpdatedAt";
-   `
+   `;
     await transaction.sequelize.query(sql, { raw: true, transaction });
   },
 };
