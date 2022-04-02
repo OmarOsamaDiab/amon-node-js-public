@@ -48,13 +48,5 @@ module.exports = function (sequelize, DataTypes) {
     return Coin.create(coin);
   };
 
-  Coin.updateCoinPrice = async function (code, price, tOpts = {}) {
-    const coin = await Coin.findByCoinCode(code, tOpts);
-    coin.price = price;
-    coin.priceLastUpdated = new Date();
-    coin.save();
-    return coin;
-  };
-
   return Coin;
 };
