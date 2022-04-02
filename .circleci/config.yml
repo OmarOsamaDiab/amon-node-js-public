@@ -25,9 +25,6 @@ jobs:
           name: unit test
           command: 'npm run test:coverage'
       - run:
-          name: coverage check
-          command: 'npm run test:coverage:check'
-      - run:
           name: send report
           command: |
             export CODECOV_TOKEN="e4efc334-9e28-4dcf-a9a2-d75c1556d4db"
