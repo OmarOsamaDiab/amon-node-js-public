@@ -44,7 +44,7 @@ const CoinController = {
         priceLastUpdatedAt: moment(),
       };
     } catch (error) {
-      // TODO: we can call a third party service again if needed
+      // TODO: we can call a third party service again if needed or return an error
       logger.error('Failed to fetch the coin price', { error });
     }
 

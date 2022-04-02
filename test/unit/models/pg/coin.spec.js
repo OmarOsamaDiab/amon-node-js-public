@@ -28,6 +28,17 @@ describe('Model:coin', () => {
     expect(coin.code).to.eq('BCH');
   });
 
+  it('Should create coin using createCoin method', async () => {
+    const coinObj = {
+      name: 'Bitcoin Credit',
+      code: 'BCC',
+    };
+    const coin = await Models.Coin.createCoin(coinObj);
+
+    expect(coin.name).to.eq(coinObj.name);
+    expect(coin.code).to.eq(coinObj.code);
+  });
+
   it('Should find by coinCode', async () => {
     const coinCode = this.coin.code;
     const coin = await Models.Coin.findByCoinCode(coinCode);
@@ -42,6 +53,6 @@ describe('Model:coin', () => {
     });
 
     const filterCoin = coin.filterKeys();
-    expect(Object.keys(filterCoin).length).to.eq(3);
+    expect(Object.keys(filterCoin).length).to.eq(2);
   });
 });

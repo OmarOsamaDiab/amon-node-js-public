@@ -31,4 +31,21 @@ describe('Controller: Coin', () => {
       expect(CoinController.getCoinByCode(coinCode)).to.be.rejectedWith(Error, 'unknown_coin_code');
     });
   });
+
+  describe('createCoin', () => {
+    const coinCode = 'ETC';
+    const coinName = 'Ether Classic';
+
+    it('should create a new coin', async () => {
+      const coin = await CoinController.createCoin(coinName, coinCode);
+      expect(coin.code).to.eq(coinCode);
+      expect(coin.name).to.eq(coinName);
+      expect(Object.keys(coin).length).to.eq(3);
+    });
+
+    it('should refuse creating the same coin if it exists', async () => {
+      await CoinController.createCoin(coinName, coinCode);
+      expect(CoinController.createCoin(coinName, coinCode)).to.be.rejectedWith(Error, 'conflict_coin_code');
+    });
+  });
 });
