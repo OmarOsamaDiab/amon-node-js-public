@@ -1,7 +1,6 @@
 const COINGECKO_BASE_URL = require('../../../config').SERVICES.COINGECKO.COINGECKO.BASE_URL;
 const errors = require('../../helpers/errors');
-const RequestService = require('../request/index');
-const logger = require('../../modules/logger');
+const RequestService = require('../api/request/index');
 
 const CoinGeckoService = {
     async getCoinPrice(coin) {
