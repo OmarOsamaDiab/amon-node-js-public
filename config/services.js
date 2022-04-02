@@ -6,6 +6,9 @@ const getConfigObject = (sourceConfig) => ({
     PORT: configParser(sourceConfig, 'number', 'PORT', 3000),
     TIMEOUT: configParser(sourceConfig, 'number', 'SERVICES_API_TIMEOUT', 28), // in second
   },
+  COINGECKO: {
+    BASE_URL: configParser(sourceConfig, 'string', 'COINGECKO_URL', 'https://api.coingecko.com/api/v3/coins'),
+  },
 });
 
 module.exports = {
